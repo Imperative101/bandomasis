@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservoirController;
 use App\Http\Controllers\MemberController;
-/*
+
+Route::get('/dropdown','DropdownController@index');
+Route::get('/dropdown-data','DropdownController@data');
+/* controller ? validator? csrf? wysiwg? ?
+php artisan make:controller EditorController
+php artisan make:controller DropdownController
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -22,7 +28,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+Route::get('/editor',[EditorController::class,'editor']);
 
 
 
