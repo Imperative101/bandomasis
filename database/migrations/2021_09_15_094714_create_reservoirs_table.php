@@ -15,9 +15,10 @@ class CreateReservoirsTable extends Migration
     {
         Schema::create('reservoirs', function (Blueprint $table) {
             $table->id();
-            $table->integer('title');
-            $table->decimal('area');
-            $table->text('about');
+            $table->string('title');//string - tekstui iki 255 simboliu
+            $table->decimal('area');// skaiciui su kableliu
+            $table->text('about');//tekstui kuris ilgesnis nei 255 simboliai
+            //integer - sveikam skaiciui
             $table->timestamps();
         });
     }

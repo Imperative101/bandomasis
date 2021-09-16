@@ -32,7 +32,7 @@ Route::get('/editor',[EditorController::class,'editor']);
 
 
 
-Route::group(['prefix' => 'schoolClasses'], function(){
+Route::group(['prefix' => 'members'], function(){
     Route::get('', [MemberController::class, 'index'])->name('member.index');
     Route::get('create', [MemberController::class, 'create'])->name('member.create');
     Route::post('store', [MemberController::class, 'store'])->name('member.store');
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'schoolClasses'], function(){
  });
 
 
-Route::group(['prefix' => 'schoolClasses'], function(){
+Route::group(['prefix' => 'reservoirs'], function(){
     Route::get('', [ReservoirController::class, 'index'])->name('reservoir.index');
     Route::get('create', [ReservoirController::class, 'create'])->name('reservoir.create');
     Route::post('store', [ReservoirController::class, 'store'])->name('reservoir.store');

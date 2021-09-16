@@ -21,10 +21,10 @@
                       <td>{!!$reservoir->title!!}</td>
                       <td>{!!$reservoir->area!!}</td>
                       <td>{!!$reservoir->about!!}</td>
-                      <td><a class="btn btn-success" href="{{route('reservoir$reservoir.show',[$reservoir])}}">užeiti</a></td>
-                      <td><a class="btn btn-primary" href="{{route('reservoir$reservoir.edit',[$reservoir])}}">edit</a></td>
+                      <td><a class="btn btn-success" href="{{route('reservoir.show',[$reservoir])}}">užeiti</a></td>
+                      <td><a class="btn btn-primary" href="{{route('reservoir.edit',[$reservoir])}}">edit</a></td>
                       <td>
-                        <form method="POST" action="{{route('reservoir$reservoir.destroy', $reservoir)}}">
+                        <form method="POST" action="{{route('reservoir.destroy', $reservoir)}}">
                           @csrf
                           <button class="btn btn-danger" type="submit">DELETE</button>
                         </form>
@@ -42,4 +42,3 @@
 </div>
 @endsection
 
-        

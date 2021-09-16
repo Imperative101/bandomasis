@@ -36,12 +36,12 @@ class ReservoirController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $reservoir = new Reservoir;
-        $reservoir->title = $reservoir->title;
-        $reservoir->area = $reservoir->area;
-        $reservoir->about = $reservoir->about;
+        $reservoir->title = $request->title;
+        $reservoir->area = $request->area;
+        $reservoir->about = $request->about;
         $reservoir->save();
         return redirect()->route('reservoir.index');
     }
@@ -81,9 +81,9 @@ class ReservoirController extends Controller
      */
     public function update(Request $request, Reservoir $reservoir)
     {
-        $reservoir->title = $reservoir->title;
-        $reservoir->area = $reservoir->area;
-        $reservoir->about = $reservoir->about;
+        $reservoir->title = $request->title;
+        $reservoir->area = $request->area;
+        $reservoir->about = $request->about;
         $reservoir->save();
        return redirect()->route('reservoir.index');
     }
