@@ -44,6 +44,14 @@
                         {{-- <small class="form-text text-muted">reservoir_id</small> --}}
                     </div>
 
+                    <!-- textarea  
+                
+                 id="summernote"
+                <textarea name="book_about" id="summernote"></textarea>
+
+                        -->
+
+
                     <div class="form-group">
                         <label>timestamps</label>
                         <input type="text" name="timestamps"  class="form-control">
@@ -63,3 +71,8 @@
 
 
          
+<script>
+$(document).ready(function() {
+   $('#summernote').summernote();
+ });
+</script>

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+
+    public function memberReservoirs()
+   {
+    return $this->hasMany('App\Models\Reservoir', 'member_id', 'id');
+   }
+
+
 }
+
+
+

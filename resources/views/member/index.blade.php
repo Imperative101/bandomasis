@@ -15,7 +15,7 @@
                      <th>live</th>
                      <th>experience</th>
                      <th>registered</th>
-                     <th>reservoir_id</th>
+                     <th>reservoir_id</th>   
                      <th>Užeiti</th>
                      <th>edit</th>
                      <th>delete</th>
@@ -28,6 +28,17 @@
                       <td>{!!$member->experience!!}</td>
                       <td>{!!$member->registered!!}</td>
                       <td>{!!$member->reservoir_id!!}</td>
+
+                      <select name="reservoir_id" class="form-control">
+                              @foreach ($reservoirs as $reservoir)
+                                    <option value="{{$reservoir->id}}" @if($reservoir->id == $member->reservoir_id) selected @endif>
+                                       {{$reservoir->title}} 
+                                    </option>
+                              @endforeach
+                      </select>
+
+
+
 
                       <td><a class="btn btn-success" href="{{route('member.show',[$member])}}">užeiti</a></td>
                       <td><a class="btn btn-primary" href="{{route('member.edit',[$member])}}">edit</a></td>
@@ -48,4 +59,5 @@
 </div>
 @endsection
 
-  
+
+

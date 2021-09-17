@@ -27,6 +27,11 @@ class ReservoirController extends Controller
      */
     public function create()
     {
+    //  41 ?????????????
+
+    // $members = Member::all();
+    // return view('reservoir.create', ['members' => $members]);
+
         return view('reservoir.create');
     }
 
@@ -44,6 +49,10 @@ class ReservoirController extends Controller
         $reservoir->about = $request->about;
         $reservoir->save();
         return redirect()->route('reservoir.index');
+
+return redirect()->route('reservoir.index')->with('success_message', 'Sekmingai įrašytas.');
+return redirect()->route('reservoir.index')->with('success_message', 'Sėkmingai pakeistas.');
+return redirect()->route('reservoir.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 
     /**
@@ -54,7 +63,10 @@ class ReservoirController extends Controller
      */
     public function show(Reservoir $reservoir)
     {
-        //
+     return view('reservoir.show',['reservoir'=>$reservoir]);
+
+
+
     }
 
     /**
@@ -86,6 +98,11 @@ class ReservoirController extends Controller
         $reservoir->about = $request->about;
         $reservoir->save();
        return redirect()->route('reservoir.index');
+
+
+return redirect()->route('reservoir.index')->with('success_message', 'Sekmingai įrašytas.');
+return redirect()->route('reservoir.index')->with('success_message', 'Sėkmingai pakeistas.');
+return redirect()->route('reservoir.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 
     /**
@@ -98,6 +115,11 @@ class ReservoirController extends Controller
     {
         $reservoir->delete();
         return redirect()->route('reservoir.index');
+
+
+return redirect()->route('reservoir.index')->with('success_message', 'Sekmingai įrašytas.');
+return redirect()->route('reservoir.index')->with('success_message', 'Sėkmingai pakeistas.');
+return redirect()->route('reservoir.index')->with('success_message', 'Sekmingai ištrintas.');
  
     }
 }

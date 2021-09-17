@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Validator;
+
 
 class MemberController extends Controller
 {
@@ -27,7 +29,9 @@ class MemberController extends Controller
     {
      // return view('member.create');
 
-    $members = Member::all();
+     
+
+       $members = Member::all();
        return view('member.create', ['members' => $members]);
     }
 
@@ -39,6 +43,22 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+            [
+                'member_name' => ['required', 'min:3', 'max:64'],
+                'member_surname' => ['required', 'min:3', 'max:64'],
+            ],
+            [
+            'member_surname.min' => 'mano zinute'
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+ 
+
+
         $member = new Member;
         $member->name = $request->member_name;
         $member->surname = $request->member_surname;
@@ -49,7 +69,19 @@ class MemberController extends Controller
         $member->save();
 
         return redirect()->route('member.index');
+
+
+
+return redirect()->route('member.index')->with('success_message', 'Sekmingai įrašytas.');
+return redirect()->route('member.index')->with('success_message', 'Sėkmingai pakeistas.');
+return redirect()->route('member.index')->with('success_message', 'Sekmingai ištrintas.');
+
+
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -59,7 +91,8 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view('member.show',['member'=>$member]);
+        
     }
 
     /**
@@ -91,6 +124,18 @@ class MemberController extends Controller
         $member->reservoir_id = $request->member_reservoir_id;
         $member->save();
         return redirect()->route('member.index');
+
+
+
+return redirect()->route('member.index')->with('success_message', 'Sekmingai įrašytas.');
+return redirect()->route('member.index')->with('success_message', 'Sėkmingai pakeistas.');
+return redirect()->route('member.index')->with('success_message', 'Sekmingai ištrintas.');
+
+
+
+
+
+
     }
 
     /**
@@ -101,9 +146,19 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-
+        if($member->memberReservoirs->count()){
+            return 'Trinti negalima, nes turi reservarų';
+        }
  
+
         $member->delete();
        return redirect()->route('member.index');
+
+       return redirect()->route('member.index')->with('success_message', 'Sekmingai įrašytas.');
+       return redirect()->route('member.index')->with('success_message', 'Sėkmingai pakeistas.');
+       return redirect()->route('member.index')->with('success_message', 'Sekmingai ištrintas.');
+
+
+
     }
 }
