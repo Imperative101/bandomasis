@@ -5,7 +5,39 @@
    <div class="row justify-content-center">
        <div class="col-md-8">
            <div class="card">
-               <div class="card-header">Members sąrašas</div>
+               
+
+
+
+
+
+
+
+               <div class="card-header">Nariu sarasas</div>
+              <form action="{{route('member.indexSpecifics')}}" method="get"> Rusiavimas</form>
+              <select class="form-control" name="order" id="">
+              <option class="form-control" name="order" id="">
+              <option value="0">rusiuokite pagal</option>
+              <option value="name">varda</option>
+              <option value="surname">pavarde</option>
+              <option value="id">registracijos data</option>
+                </select>
+              filtravimas
+              <select class="form control" name="filter" id="">
+                <option value="0">filtruokite pagal</option>
+                    @foreach($waters as $water)
+                    <option value="{{$water->id}}">{{$water->title}}</option>
+                @endforeach
+                  </select>
+                    <button class="btn btn-primary" type="submit">select</button>
+                    </form>
+                      <a href="{{route('member.index'))}">isvalyti filtra</a>
+                      </div>
+
+
+
+
+
 
                <div class="card-body">
                  <table class="table">

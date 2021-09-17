@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Reservoir;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -15,10 +16,26 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $members = Member::all();
-        return view('member.index', ['members' => $members]);
+    {   
+        $members = Member::orderBy('surname')->orderBy('name')->get();
+        $waters = Reservoir::all();
+        return view('member.index', ['members' => $members, 'waters' =>$waters]); //?
     }
+    public function indexSpecifics(Request $request) 
+    {
+       
+        $members = Member::all();
+        if ($request->order) {
+            $members = $members->sortBy($request->order);
+        }
+        if($request->filter) {
+            $members = $members->where('reservoir_id','=', $request->$filter);
+        }
+        $waters=Reservoir::all();
+        return view('member.index', ['members' => $members, 'waters' => $waters]);
+
+    }
+  
 
     /**
      * Show the form for creating a new resource.
