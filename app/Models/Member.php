@@ -11,7 +11,11 @@ class Member extends Model
 
     public function memberReservoir()
    {
-    return $this->hasMany('App\Models\Reservoir', 'member_id', 'id');
+    return $this->belongsTo('App\Models\Reservoir', 'reservoir_id', 'id');
+
+
+
+  //  return $this->hasMany('App\Models\Reservoir', 'member_id', 'id');
    }
 
 

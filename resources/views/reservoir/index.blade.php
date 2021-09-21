@@ -12,7 +12,7 @@
                    <tr>
                      <th>title</th>
                      <th>area</th>
-                     <th>id</th>
+                     <!-- <th>id</th> -->
                      <th>edit</th>
                      <th>delete</th>
                    </tr>
@@ -20,7 +20,7 @@
                     <tr>
                       <td>{!!$reservoir->title!!}</td>
                       <td>{!!$reservoir->area!!}</td>
-                      <td>{!!$reservoir->about!!}</td>
+                      <!-- <td>{!!$reservoir->about!!}</td> -->
                       <td><a class="btn btn-success" href="{{route('reservoir.show',[$reservoir])}}">užeiti</a></td>
                       <td><a class="btn btn-primary" href="{{route('reservoir.edit',[$reservoir])}}">edit</a></td>
                       <td>

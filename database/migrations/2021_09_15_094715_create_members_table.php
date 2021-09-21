@@ -20,7 +20,9 @@ class CreateMembersTable extends Migration
             $table->string('live');
             $table->tinyInteger('experience');
             $table->tinyInteger('registered'); 
-            $table->integer('reservoir_id'); 
+            
+            $table->unsignedBigInteger('reservoir_id');
+            $table->foreign('reservoir_id')->references('id')->on('reservoirs');
             $table->timestamps();
         });
     }

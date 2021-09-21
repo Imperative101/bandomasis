@@ -31,10 +31,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/editor',[EditorController::class,'editor']);
 
 
-
 Route::group(['prefix' => 'members'], function(){
     Route::get('', [MemberController::class, 'index'])->name('member.index');
     Route::get('create', [MemberController::class, 'create'])->name('member.create');
+    Route::get('indexSpecifics', [MemberController::class, 'indexSpecifics'])->name('member.indexSpecifics');
     Route::post('store', [MemberController::class, 'store'])->name('member.store');
     Route::get('edit/{member}', [MemberController::class, 'edit'])->name('member.edit');
     Route::post('update/{member}', [MemberController::class, 'update'])->name('member.update');
